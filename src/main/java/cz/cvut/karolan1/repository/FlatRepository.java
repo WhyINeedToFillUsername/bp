@@ -11,4 +11,7 @@ import java.util.List;
  */
 public interface FlatRepository extends JpaRepository<Flat,Long> {
 
+    @Query("select flat from Flat flat where flat.hasResident.login = ?#{principal.username}")
+    List<Flat> findByHasResidentIsCurrentUser();
+
 }

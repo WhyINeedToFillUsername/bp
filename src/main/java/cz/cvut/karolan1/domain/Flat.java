@@ -4,7 +4,7 @@ package cz.cvut.karolan1.domain;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 /**
@@ -21,12 +21,21 @@ public class Flat implements Serializable {
     private Long id;
 
     @NotNull
-    @Size(min = 2, max = 20)
-    @Column(name = "name", length = 20, nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "date_created")
-    private LocalDate dateCreated;
+    private ZonedDateTime dateCreated;
+
+    @ManyToOne
+    private Flat friendsOf;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User hasAdmin;
+
+    @ManyToOne
+    private User hasResident;
 
     public Long getId() {
         return id;
@@ -44,12 +53,36 @@ public class Flat implements Serializable {
         this.name = name;
     }
 
-    public LocalDate getDateCreated() {
+    public ZonedDateTime getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(LocalDate dateCreated) {
+    public void setDateCreated(ZonedDateTime dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    public Flat getFriendsOf() {
+        return friendsOf;
+    }
+
+    public void setFriendsOf(Flat flat) {
+        this.friendsOf = flat;
+    }
+
+    public User getHasAdmin() {
+        return hasAdmin;
+    }
+
+    public void setHasAdmin(User user) {
+        this.hasAdmin = user;
+    }
+
+    public User getHasResident() {
+        return hasResident;
+    }
+
+    public void setHasResident(User user) {
+        this.hasResident = user;
     }
 
     @Override

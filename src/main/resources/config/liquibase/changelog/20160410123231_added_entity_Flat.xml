@@ -21,16 +21,40 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(20)">
+            <column name="name" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             
-            <column name="date_created" type="date">
+            <column name="date_created" type="timestamp">
                 <constraints nullable="true" />
             </column>
             
+            <column name="friends_of_id" type="bigint"/>
+            <column name="has_admin_id" type="bigint">
+                <constraints unique="true"/>
+            </column>
+            <column name="has_resident_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="flat" columnName="date_created" columnDataType="datetime"/>
         
+        <addForeignKeyConstraint baseColumnNames="friends_of_id"
+                                 baseTableName="flat"
+                                 constraintName="fk_flat_friendsof_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="flat"/>
+
+        <addForeignKeyConstraint baseColumnNames="has_admin_id"
+                                 baseTableName="flat"
+                                 constraintName="fk_flat_hasadmin_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="has_resident_id"
+                                 baseTableName="flat"
+                                 constraintName="fk_flat_hasresident_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
     </changeSet>
 </databaseChangeLog>

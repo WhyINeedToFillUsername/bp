@@ -5,9 +5,9 @@
         .module('bp250App')
         .controller('FlatDetailController', FlatDetailController);
 
-    FlatDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Flat'];
+    FlatDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Flat', 'User'];
 
-    function FlatDetailController($scope, $rootScope, $stateParams, entity, Flat) {
+    function FlatDetailController($scope, $rootScope, $stateParams, entity, Flat, User) {
         var vm = this;
         vm.flat = entity;
         vm.load = function (id) {

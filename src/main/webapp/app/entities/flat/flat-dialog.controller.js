@@ -5,11 +5,13 @@
         .module('bp250App')
         .controller('FlatDialogController', FlatDialogController);
 
-    FlatDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Flat'];
+    FlatDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Flat', 'User'];
 
-    function FlatDialogController ($scope, $stateParams, $uibModalInstance, entity, Flat) {
+    function FlatDialogController ($scope, $stateParams, $uibModalInstance, $q, entity, Flat, User) {
         var vm = this;
         vm.flat = entity;
+        vm.flats = Flat.query();
+        vm.users = User.query();
         vm.load = function(id) {
             Flat.get({id : id}, function(result) {
                 vm.flat = result;

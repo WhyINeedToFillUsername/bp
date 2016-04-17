@@ -10,7 +10,22 @@
         <hr>
         <dt><span>DateCreated</dt></dt>
         <dd>
-            <span>{{vm.flat.dateCreated | date:'mediumDate'}}</span>
+            <span>{{vm.flat.dateCreated | date:'medium'}}</span>
+        </dd>
+        <hr>
+        <dt><span>friendsOf</span></dt>
+        <dd>
+            <a ui-sref="flat-detail({id:vm.flat.friendsOf.id})">{{vm.flat.friendsOf.id}}</a>
+        </dd>
+        <hr>
+        <dt><span>hasAdmin</span></dt>
+        <dd>
+            {{vm.flat.hasAdmin.login}}
+        </dd>
+        <hr>
+        <dt><span>hasResident</span></dt>
+        <dd>
+            {{vm.flat.hasResident.login}}
         </dd>
         <hr>
     </dl>

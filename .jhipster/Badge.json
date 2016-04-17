@@ -1,0 +1,30 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "ownedBy",
+      "otherEntityName": "user",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-many",
+      "relationshipName": "isOfType",
+      "otherEntityName": "typeOfBadge",
+      "otherEntityRelationshipName": "badge"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "earnedAt",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "changelogDate": "20160417151317",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "badge"
+}

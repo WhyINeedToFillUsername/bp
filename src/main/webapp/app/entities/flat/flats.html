@@ -21,6 +21,9 @@
                     <th><span>ID</span></th>
                     <th><span>Name</span></th>
                     <th><span>DateCreated</span></th>
+                    <th><span>friendsOf</span></th>
+                    <th><span>hasAdmin</span></th>
+                    <th><span>hasResident</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,7 +31,16 @@
                 <tr ng-repeat="flat in vm.flats track by flat.id">
                     <td><a ui-sref="flat-detail({id:flat.id})">{{flat.id}}</a></td>
                     <td>{{flat.name}}</td>
-                        <td>{{flat.dateCreated | date:'mediumDate'}}</td>
+                    <td>{{flat.dateCreated | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="flat-detail({id:flat.friendsOf.id})">{{flat.friendsOf.id}}</a>
+                    </td>
+                    <td>
+                        {{flat.hasAdmin.login}}
+                    </td>
+                    <td>
+                        {{flat.hasResident.login}}
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
