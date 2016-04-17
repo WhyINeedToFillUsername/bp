@@ -1,0 +1,25 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "2",
+            "fieldValidateRulesMaxlength": "20"
+        },
+        {
+            "fieldName": "dateCreated",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20160410123231",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "flat",
+    "pagination": "no"
+}

@@ -1,0 +1,8 @@
+version: '2'
+services:
+    bp250-sonar:
+        container_name: bp250-sonar
+        image: sonarqube:5.3
+        ports:
+            - 9000:9000
+            - 9092:9092

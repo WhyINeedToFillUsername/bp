@@ -1,0 +1,12 @@
+version: '2'
+services:
+    bp250-postgresql:
+        container_name: bp250-postgresql
+        image: postgres:9.5.1
+        # volumes:
+        #     - ~/volumes/jhipster/bp250/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=bp250
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
