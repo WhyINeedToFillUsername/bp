@@ -41,6 +41,11 @@ public class Flat implements Serializable {
     private Set<Flat> friends = new HashSet<>();
 
     @OneToMany
+    @JoinTable(
+        name = "flat_residents",
+        joinColumns = @JoinColumn(name = "flat_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     @JsonIgnore
     private Set<User> residents = new HashSet<>();
 
