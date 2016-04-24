@@ -18,10 +18,10 @@ spring:
         livereload:
             enabled: false
     datasource:
-        url: jdbc:postgresql://localhost:5432/bp250
-        name:
-        username: bp250
-        password:
+        url: jdbc:postgresql://localhost:5432/
+        name: tidyup
+        username: tidyup
+        password: 7h15155up3rP455w0rdF0r71dyUp
     jpa:
         database-platform: cz.cvut.karolan1.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
@@ -77,5 +77,3 @@ jhipster:
             host: localhost
             port: 5000
             queueSize: 512
-    swagger: # swagger is disabled. It can be disabled by pasing 'no-swagger' profile at run time as well
-        enabled: false

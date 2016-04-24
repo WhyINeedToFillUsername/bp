@@ -11,8 +11,6 @@
 # ===================================================================
 
 spring:
-    application:
-        name: bp250
     datasource:
         url: jdbc:h2:mem:bp250;DB_CLOSE_DELAY=-1
         name:
@@ -78,4 +76,3 @@ jhipster:
         contactEmail:
         license:
         licenseUrl:
-        enabled: false

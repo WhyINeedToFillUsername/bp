@@ -5,9 +5,9 @@
         .module('bp250App')
         .factory('Auth', Auth);
 
-    Auth.$inject = ['$rootScope', '$state', '$sessionStorage', '$q', 'Principal', 'AuthServerProvider', 'Account', 'LoginService', 'Register', 'Activate', 'Password', 'PasswordResetInit', 'PasswordResetFinish'];
+    Auth.$inject = ['$rootScope', '$state', '$q', 'Principal', 'AuthServerProvider', 'Account', 'LoginService', 'Register', 'Activate', 'Password', 'PasswordResetInit', 'PasswordResetFinish'];
 
-    function Auth ($rootScope, $state, $sessionStorage, $q, Principal, AuthServerProvider, Account, LoginService, Register, Activate, Password, PasswordResetInit, PasswordResetFinish) {
+    function Auth ($rootScope, $state, $q, Principal, AuthServerProvider, Account, LoginService, Register, Activate, Password, PasswordResetInit, PasswordResetFinish) {
         var service = {
             activateAccount: activateAccount,
             authorize: authorize,
@@ -47,15 +47,6 @@
                     $state.go('home');
                 }
 
-                // recover and clear previousState after external login redirect (e.g. oauth2)
-                if (isAuthenticated && !$rootScope.fromState.name && $sessionStorage.previousStateName) {
-                    var previousStateName = $sessionStorage.previousStateName;
-                    var previousStateParams = $sessionStorage.previousStateParams;
-                    delete $sessionStorage.previousStateName;
-                    delete $sessionStorage.previousStateParams;
-                    $state.go(previousStateName, previousStateParams);
-                }
-
                 if ($rootScope.toState.data.authorities && $rootScope.toState.data.authorities.length > 0 && !Principal.hasAnyAuthority($rootScope.toState.data.authorities)) {
                     if (isAuthenticated) {
                         // user is signed in but not authorized for desired state
@@ -64,13 +55,13 @@
                     else {
                         // user is not authenticated. stow the state they wanted before you
                         // send them to the login service, so you can return them when you're done
-                        $sessionStorage.previousStateName = $rootScope.toState.name;
-                        $sessionStorage.previousStateParams = $rootScope.toStateParams;
+                        $rootScope.redirected = true;
+                        $rootScope.previousStateName = $rootScope.toState;
+                        $rootScope.previousStateNameParams = $rootScope.toStateParams;
 
                         // now, send them to the signin state so they can log in
-                        $state.go('accessdenied').then(function() {
-                            LoginService.open();
-                        });
+                        $state.go('accessdenied');
+                        LoginService.open();
                     }
                 }
             }
@@ -126,9 +117,11 @@
             AuthServerProvider.logout();
             Principal.authenticate(null);
 
-            // Reset state memory
-            delete $sessionStorage.previousStateName;
-            delete $sessionStorage.previousStateParams;
+            // Reset state memory if not redirected
+            if(!$rootScope.redirected) {
+                $rootScope.previousStateName = undefined;
+                $rootScope.previousStateNameParams = undefined;
+            }
         }
 
         function resetPasswordFinish (keyAndPassword, callback) {

@@ -77,7 +77,6 @@
         <sonar.tests>${project.basedir}/src/test/</sonar.tests>
     </properties>
 
-
     <dependencies>
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
@@ -551,7 +550,7 @@
                     <driver></driver>
                     <url></url>
                     <defaultSchemaName></defaultSchemaName>
-                    <username>bp250</username>
+                    <username></username>
                     <password></password>
                     <referenceUrl>hibernate:spring:cz.cvut.karolan1.domain?dialect=&amp;hibernate.ejb.naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy</referenceUrl>
                     <verbose>true</verbose>
@@ -593,7 +592,7 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>0.4.5</version>
+                <version>0.4.1</version>
                 <configuration>
                     <imageName>bp250</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
@@ -736,6 +735,9 @@
                             <filesets>
                                 <fileset>
                                     <directory>target/www/</directory>
+                                </fileset>
+                                <fileset>
+                                    <directory>node_modules</directory>
                                 </fileset>
                             </filesets>
                         </configuration>
