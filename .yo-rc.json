@@ -1,6 +1,6 @@
 {
   "generator-jhipster": {
-    "jhipsterVersion": "3.0.0",
+    "jhipsterVersion": "3.1.0",
     "baseName": "bp250",
     "packageName": "cz.cvut.karolan1",
     "packageFolder": "cz/cvut/karolan1",
@@ -19,6 +19,8 @@
     "testFrameworks": [
       "gatling"
     ],
-    "enableTranslation": false
+    "enableTranslation": false,
+    "enableSocialSignIn": false,
+    "jhiPrefix": "jhi"
   }
 }

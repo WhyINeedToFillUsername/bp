@@ -17,19 +17,6 @@ spring:
             enabled: true
         livereload:
             enabled: false # we use gulp + BrowserSync for livereload
-#    datasource:
-#        url: jdbc:postgresql://localhost:5432/
-#        name: tidyup
-#        username: tidyup
-#        password: 7h15155up3rP455w0rdF0r71dyUp
-#    jpa:
-#        database-platform: cz.cvut.karolan1.domain.util.FixedPostgreSQL82Dialect
-#        database: POSTGRESQL
-#        show_sql: false
-#        properties:
-#            hibernate.cache.use_second_level_cache: false
-#            hibernate.cache.use_query_cache: false
-#            hibernate.generate_statistics: false
     datasource:
         url: jdbc:h2:mem:bp250;DB_CLOSE_DELAY=-1
         name:
@@ -37,7 +24,7 @@ spring:
         password:
     h2:
         console:
-            enabled: true
+            enabled: false
     jpa:
         database-platform: cz.cvut.karolan1.domain.util.FixedH2Dialect
         database: H2
@@ -86,3 +73,5 @@ jhipster:
             host: localhost
             port: 5000
             queueSize: 512
+    swagger: # swagger is enabled. It can be disabled by pasing 'no-swagger' profile at run time as well
+        enabled: true
