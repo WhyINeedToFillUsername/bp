@@ -26,9 +26,6 @@ public class TypeOfBadge implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
-    private Badge badge;
-
     public Long getId() {
         return id;
     }
@@ -51,14 +48,6 @@ public class TypeOfBadge implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Badge getBadge() {
-        return badge;
-    }
-
-    public void setBadge(Badge badge) {
-        this.badge = badge;
     }
 
     @Override

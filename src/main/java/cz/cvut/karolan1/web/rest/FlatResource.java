@@ -88,7 +88,7 @@ public class FlatResource {
     @Timed
     public List<Flat> getAllFlats() {
         log.debug("REST request to get all Flats");
-        List<Flat> flats = flatRepository.findAll();
+        List<Flat> flats = flatRepository.findAllWithEagerRelationships();
         return flats;
     }
 
@@ -104,7 +104,7 @@ public class FlatResource {
     @Timed
     public ResponseEntity<Flat> getFlat(@PathVariable Long id) {
         log.debug("REST request to get Flat : {}", id);
-        Flat flat = flatRepository.findOne(id);
+        Flat flat = flatRepository.findOneWithEagerRelationships(id);
         return Optional.ofNullable(flat)
             .map(result -> new ResponseEntity<>(
                 result,

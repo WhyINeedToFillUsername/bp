@@ -21,7 +21,6 @@
                     <th><span>ID</span></th>
                     <th><span>Name</span></th>
                     <th><span>Description</span></th>
-                    <th><span>badge</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,9 +29,6 @@
                     <td><a ui-sref="type-of-badge-detail({id:typeOfBadge.id})">{{typeOfBadge.id}}</a></td>
                     <td>{{typeOfBadge.name}}</td>
                     <td>{{typeOfBadge.description}}</td>
-                    <td>
-                        <a ui-sref="badge-detail({id:typeOfBadge.badge.id})">{{typeOfBadge.badge.id}}</a>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

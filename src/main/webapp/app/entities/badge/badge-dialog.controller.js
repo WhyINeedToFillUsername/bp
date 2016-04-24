@@ -5,13 +5,13 @@
         .module('bp250App')
         .controller('BadgeDialogController', BadgeDialogController);
 
-    BadgeDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Badge', 'User', 'TypeOfBadge'];
+    BadgeDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Badge', 'TypeOfBadge', 'User'];
 
-    function BadgeDialogController ($scope, $stateParams, $uibModalInstance, entity, Badge, User, TypeOfBadge) {
+    function BadgeDialogController ($scope, $stateParams, $uibModalInstance, entity, Badge, TypeOfBadge, User) {
         var vm = this;
         vm.badge = entity;
-        vm.users = User.query();
         vm.typeofbadges = TypeOfBadge.query();
+        vm.users = User.query();
         vm.load = function(id) {
             Badge.get({id : id}, function(result) {
                 vm.badge = result;

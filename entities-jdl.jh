@@ -27,31 +27,21 @@ entity TypeOfBadge {
     description String
 }
 
-relationship ManyToOne {
-	Flat{friendsOf} to Flat
-}
 relationship OneToOne {
 	Flat{hasAdmin} to User
 }
 relationship OneToMany {
-	User{isResidentOf} to Flat{hasResident}
-}
-relationship OneToMany {
 	User{hasChore} to Chore{isDoneBy}
+	User{hasBadge} to Badge{ownedBy}
+    Flat{hasResidents} to User{isResidentOf}
 }
-relationship OneToOne {
+relationship ManyToMany {
+	Flat{friendOf} to Flat{friendWith}
+}
+relationship ManyToOne {
 	Chore{isOfType} to TypeOfChore
-}
-relationship ManyToOne {
 	Event{doneBy} to User
-}
-relationship ManyToOne {
 	Event{is} to Chore
-}
-relationship ManyToOne {
-	Badge{ownedBy} to User
-}
-relationship OneToMany {
 	Badge{isOfType} to TypeOfBadge
 }
 

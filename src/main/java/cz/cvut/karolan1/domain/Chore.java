@@ -22,8 +22,7 @@ public class Chore implements Serializable {
     @Column(name = "date")
     private ZonedDateTime date;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
     private TypeOfChore isOfType;
 
     @ManyToOne

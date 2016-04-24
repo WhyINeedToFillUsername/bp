@@ -3,19 +3,19 @@
     <h2><span>Event</span> {{vm.event.id}}</h2>
     <hr>
     <dl class="dl-horizontal">
-        <dt><span>DateTill</span></dt>
+        <dt><span>DateTill</dt></dt>
         <dd>
             <span>{{vm.event.dateTill | date:'medium'}}</span>
         </dd>
         <hr>
-        <dt><span>DateDone</span></dt>
+        <dt><span>DateDone</dt></dt>
         <dd>
             <span>{{vm.event.dateDone | date:'medium'}}</span>
         </dd>
         <hr>
         <dt><span>doneBy</span></dt>
         <dd>
-            {{vm.event.doneBy.login}}
+            {{vm.event.doneBy.id}}
         </dd>
         <hr>
         <dt><span>is</span></dt>

@@ -1,11 +1,14 @@
 package cz.cvut.karolan1.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Flat.
@@ -27,15 +30,19 @@ public class Flat implements Serializable {
     @Column(name = "date_created")
     private ZonedDateTime dateCreated;
 
-    @ManyToOne
-    private Flat friendsOf;
-
     @OneToOne
     @JoinColumn(unique = true)
     private User hasAdmin;
 
-    @ManyToOne
-    private User hasResident;
+    @ManyToMany
+    @JoinTable(name = "friends",
+               joinColumns = @JoinColumn(name="flat_id", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="friend_id", referencedColumnName="ID"))
+    private Set<Flat> friends = new HashSet<>();
+
+    @OneToMany
+    @JsonIgnore
+    private Set<User> residents = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -61,14 +68,6 @@ public class Flat implements Serializable {
         this.dateCreated = dateCreated;
     }
 
-    public Flat getFriendsOf() {
-        return friendsOf;
-    }
-
-    public void setFriendsOf(Flat flat) {
-        this.friendsOf = flat;
-    }
-
     public User getHasAdmin() {
         return hasAdmin;
     }
@@ -77,12 +76,20 @@ public class Flat implements Serializable {
         this.hasAdmin = user;
     }
 
-    public User getHasResident() {
-        return hasResident;
+    public Set<Flat> getFriends() {
+        return friends;
     }
 
-    public void setHasResident(User user) {
-        this.hasResident = user;
+    public void setFriends(Set<Flat> flats) {
+        this.friends = flats;
+    }
+
+    public Set<User> getResidents() {
+        return residents;
+    }
+
+    public void setResidents(Set<User> users) {
+        this.residents = users;
     }
 
     @Override

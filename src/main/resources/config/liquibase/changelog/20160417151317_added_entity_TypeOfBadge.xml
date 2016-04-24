@@ -29,15 +29,8 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="badge_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         
-        <addForeignKeyConstraint baseColumnNames="badge_id"
-                                 baseTableName="type_of_badge"
-                                 constraintName="fk_typeofbadge_badge_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="badge"/>
-
     </changeSet>
 </databaseChangeLog>

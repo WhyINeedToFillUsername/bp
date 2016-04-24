@@ -25,11 +25,18 @@
                 <constraints nullable="true" />
             </column>
             
+            <column name="is_of_type_id" type="bigint"/>
             <column name="owned_by_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="badge" columnName="earned_at" columnDataType="datetime"/>
         
+        <addForeignKeyConstraint baseColumnNames="is_of_type_id"
+                                 baseTableName="badge"
+                                 constraintName="fk_badge_isoftype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="type_of_badge"/>
+
         <addForeignKeyConstraint baseColumnNames="owned_by_id"
                                  baseTableName="badge"
                                  constraintName="fk_badge_ownedby_id"

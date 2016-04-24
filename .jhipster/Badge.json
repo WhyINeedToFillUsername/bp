@@ -3,16 +3,16 @@
     {
       "relationshipId": 1,
       "relationshipType": "many-to-one",
-      "relationshipName": "ownedBy",
-      "otherEntityName": "user",
+      "relationshipName": "isOfType",
+      "otherEntityName": "typeOfBadge",
       "otherEntityField": "id"
     },
     {
       "relationshipId": 2,
-      "relationshipType": "one-to-many",
-      "relationshipName": "isOfType",
-      "otherEntityName": "typeOfBadge",
-      "otherEntityRelationshipName": "badge"
+      "relationshipType": "many-to-one",
+      "relationshipName": "ownedBy",
+      "otherEntityName": "user",
+      "otherEntityField": "id"
     }
   ],
   "fields": [

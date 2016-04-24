@@ -3,29 +3,26 @@
     <h2><span>Flat</span> {{vm.flat.id}}</h2>
     <hr>
     <dl class="dl-horizontal">
-        <dt><span>Name</span></dt></dt>
+        <dt><span>Name</span></dt>
         <dd>
             <span>{{vm.flat.name}}</span>
         </dd>
         <hr>
-        <dt><span>DateCreated</dt></dt>
+        <dt><span>DateCreated</span></dt>
         <dd>
             <span>{{vm.flat.dateCreated | date:'medium'}}</span>
         </dd>
         <hr>
-        <dt><span>friendsOf</span></dt>
-        <dd>
-            <a ui-sref="flat-detail({id:vm.flat.friendsOf.id})">{{vm.flat.friendsOf.id}}</a>
-        </dd>
-        <hr>
         <dt><span>hasAdmin</span></dt>
         <dd>
-            {{vm.flat.hasAdmin.login}}
+            {{vm.flat.hasAdmin.id}}
         </dd>
         <hr>
-        <dt><span>hasResident</span></dt>
+        <dt><span>friendOf</span></dt>
         <dd>
-            {{vm.flat.hasResident.login}}
+            <span ng-repeat="friend in vm.flat.friends">
+                <a ui-sref="flat-detail({id: {{friend.id}}})">{{friend.id}}</a>{{$last ? '' : ', '}}
+            </span>
         </dd>
         <hr>
     </dl>

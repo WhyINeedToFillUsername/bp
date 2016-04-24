@@ -1,13 +1,5 @@
 {
-  "relationships": [
-    {
-      "relationshipId": 1,
-      "relationshipName": "badge",
-      "otherEntityName": "badge",
-      "relationshipType": "many-to-one",
-      "otherEntityField": "id"
-    }
-  ],
+  "relationships": [],
   "fields": [
     {
       "fieldId": 1,

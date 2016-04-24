@@ -5,20 +5,12 @@
         .module('bp250App')
         .controller('ChoreDialogController', ChoreDialogController);
 
-    ChoreDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Chore', 'TypeOfChore', 'User'];
+    ChoreDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Chore', 'TypeOfChore', 'User'];
 
-    function ChoreDialogController ($scope, $stateParams, $uibModalInstance, $q, entity, Chore, TypeOfChore, User) {
+    function ChoreDialogController ($scope, $stateParams, $uibModalInstance, entity, Chore, TypeOfChore, User) {
         var vm = this;
         vm.chore = entity;
-        vm.isoftypes = TypeOfChore.query({filter: 'chore-is-null'});
-        $q.all([vm.chore.$promise, vm.isoftypes.$promise]).then(function() {
-            if (!vm.chore.isOfType || !vm.chore.isOfType.id) {
-                return $q.reject();
-            }
-            return TypeOfChore.get({id : vm.chore.isOfType.id}).$promise;
-        }).then(function(isOfType) {
-            vm.isoftypes.push(isOfType);
-        });
+        vm.typeofchores = TypeOfChore.query();
         vm.users = User.query();
         vm.load = function(id) {
             Chore.get({id : id}, function(result) {

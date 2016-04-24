@@ -25,8 +25,14 @@
         </div>
 
         <div class="form-group">
+            <label for="field_isOfType">isOfType</label>
+            <select class="form-control" id="field_isOfType" name="isOfType" ng-model="vm.badge.isOfType" ng-options="typeOfBadge as typeOfBadge.id for typeOfBadge in vm.typeofbadges track by typeOfBadge.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="field_ownedBy">ownedBy</label>
-            <select class="form-control" id="field_ownedBy" name="ownedBy" ng-model="vm.badge.ownedBy" ng-options="user as user.login for user in vm.users track by user.id">
+            <select class="form-control" id="field_ownedBy" name="ownedBy" ng-model="vm.badge.ownedBy" ng-options="user as user.id for user in vm.users track by user.id">
                 <option value=""></option>
             </select>
         </div>

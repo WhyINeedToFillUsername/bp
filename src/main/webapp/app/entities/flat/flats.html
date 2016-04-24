@@ -21,9 +21,9 @@
                     <th><span>ID</span></th>
                     <th><span>Name</span></th>
                     <th><span>DateCreated</span></th>
-                    <th><span>friendsOf</span></th>
                     <th><span>hasAdmin</span></th>
-                    <th><span>hasResident</span></th>
+                    <th><span>Friends</span></th>
+                    <!--<th><span>Residents</span></th>-->
                     <th></th>
                 </tr>
             </thead>
@@ -33,14 +33,14 @@
                     <td>{{flat.name}}</td>
                     <td>{{flat.dateCreated | date:'medium'}}</td>
                     <td>
-                        <a ui-sref="flat-detail({id:flat.friendsOf.id})">{{flat.friendsOf.id}}</a>
+                        {{flat.hasAdmin.id}}
                     </td>
                     <td>
-                        {{flat.hasAdmin.login}}
+                        <span ng-repeat="friend in flat.friends">
+                            <a class="form-control-static" ui-sref="flat-detail({id: {{friend.id}}})">{{friend.id}}</a>{{$last ? '' : ', '}}
+                        </span>
                     </td>
-                    <td>
-                        {{flat.hasResident.login}}
-                    </td>
+                    <!--<td>{{flat.hasResidents.id}}</td>-->
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

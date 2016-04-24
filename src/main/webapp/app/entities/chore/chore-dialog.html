@@ -26,13 +26,13 @@
 
         <div class="form-group">
             <label for="field_isOfType">isOfType</label>
-            <select class="form-control" id="field_isOfType" name="isOfType" ng-model="vm.chore.isOfType" ng-options="typeOfChore as typeOfChore.id for typeOfChore in vm.isoftypes | orderBy:'id' track by typeOfChore.id">
+            <select class="form-control" id="field_isOfType" name="isOfType" ng-model="vm.chore.isOfType" ng-options="typeOfChore as typeOfChore.id for typeOfChore in vm.typeofchores track by typeOfChore.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label for="field_isDoneBy">isDoneBy</label>
-            <select class="form-control" id="field_isDoneBy" name="isDoneBy" ng-model="vm.chore.isDoneBy" ng-options="user as user.login for user in vm.users track by user.id">
+            <select class="form-control" id="field_isDoneBy" name="isDoneBy" ng-model="vm.chore.isDoneBy" ng-options="user as user.id for user in vm.users track by user.id">
                 <option value=""></option>
             </select>
         </div>

@@ -1,12 +1,9 @@
 package cz.cvut.karolan1.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -26,11 +23,10 @@ public class Badge implements Serializable {
     private ZonedDateTime earnedAt;
 
     @ManyToOne
-    private User ownedBy;
+    private TypeOfBadge isOfType;
 
-    @OneToMany(mappedBy = "badge")
-    @JsonIgnore
-    private Set<TypeOfBadge> isOfTypes = new HashSet<>();
+    @ManyToOne
+    private User ownedBy;
 
     public Long getId() {
         return id;
@@ -48,20 +44,20 @@ public class Badge implements Serializable {
         this.earnedAt = earnedAt;
     }
 
+    public TypeOfBadge getIsOfType() {
+        return isOfType;
+    }
+
+    public void setIsOfType(TypeOfBadge typeOfBadge) {
+        this.isOfType = typeOfBadge;
+    }
+
     public User getOwnedBy() {
         return ownedBy;
     }
 
     public void setOwnedBy(User user) {
         this.ownedBy = user;
-    }
-
-    public Set<TypeOfBadge> getIsOfTypes() {
-        return isOfTypes;
-    }
-
-    public void setIsOfTypes(Set<TypeOfBadge> typeOfBadges) {
-        this.isOfTypes = typeOfBadges;
     }
 
     @Override

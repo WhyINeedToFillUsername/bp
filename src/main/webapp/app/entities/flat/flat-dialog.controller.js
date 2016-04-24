@@ -10,8 +10,8 @@
     function FlatDialogController ($scope, $stateParams, $uibModalInstance, $q, entity, Flat, User) {
         var vm = this;
         vm.flat = entity;
-        vm.flats = Flat.query();
         vm.users = User.query();
+        vm.flats = Flat.query();
         vm.load = function(id) {
             Flat.get({id : id}, function(result) {
                 vm.flat = result;

@@ -2,13 +2,6 @@
   "relationships": [
     {
       "relationshipId": 1,
-      "relationshipType": "many-to-one",
-      "relationshipName": "friendsOf",
-      "otherEntityName": "flat",
-      "otherEntityField": "id"
-    },
-    {
-      "relationshipId": 2,
       "relationshipType": "one-to-one",
       "relationshipName": "hasAdmin",
       "otherEntityName": "user",
@@ -17,11 +10,20 @@
       "otherEntityRelationshipName": "flat"
     },
     {
-      "relationshipId": 3,
-      "relationshipType": "many-to-one",
-      "relationshipName": "hasResident",
-      "otherEntityName": "user",
-      "otherEntityField": "id"
+      "relationshipId": 2,
+      "relationshipType": "many-to-many",
+      "relationshipName": "friends",
+      "otherEntityName": "flat",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+        "relationshipId": 3,
+        "relationshipType": "one-to-many",
+        "relationshipName": "hasResidents",
+        "otherEntityName": "user",
+        "otherEntityField": "id",
+        "otherEntityRelationshipName": "isResidentOf"
     }
   ],
   "fields": [

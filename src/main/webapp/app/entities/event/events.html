@@ -32,7 +32,7 @@
                     <td>{{event.dateTill | date:'medium'}}</td>
                     <td>{{event.dateDone | date:'medium'}}</td>
                     <td>
-                        {{event.doneBy.login}}
+                        {{event.doneBy.id}}
                     </td>
                     <td>
                         <a ui-sref="chore-detail({id:event.is.id})">{{event.is.id}}</a>

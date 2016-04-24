@@ -5,9 +5,9 @@
         .module('bp250App')
         .controller('BadgeDetailController', BadgeDetailController);
 
-    BadgeDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Badge', 'User', 'TypeOfBadge'];
+    BadgeDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Badge', 'TypeOfBadge', 'User'];
 
-    function BadgeDetailController($scope, $rootScope, $stateParams, entity, Badge, User, TypeOfBadge) {
+    function BadgeDetailController($scope, $rootScope, $stateParams, entity, Badge, TypeOfBadge, User) {
         var vm = this;
         vm.badge = entity;
         vm.load = function (id) {

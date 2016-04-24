@@ -3,6 +3,7 @@ package cz.cvut.karolan1.repository;
 import cz.cvut.karolan1.domain.Flat;
 
 import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -11,7 +12,9 @@ import java.util.List;
  */
 public interface FlatRepository extends JpaRepository<Flat,Long> {
 
-    @Query("select flat from Flat flat where flat.hasResident.login = ?#{principal.username}")
-    List<Flat> findByHasResidentIsCurrentUser();
+    @Query("select distinct flat from Flat flat left join fetch flat.friends")
+    List<Flat> findAllWithEagerRelationships();
 
+    @Query("select flat from Flat flat left join fetch flat.friends where flat.id =:id")
+    Flat findOneWithEagerRelationships(@Param("id") Long id);
 }

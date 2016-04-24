@@ -4,7 +4,7 @@ describe('Controller Tests', function() {
 
     describe('Badge Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockBadge, MockUser, MockTypeOfBadge;
+        var MockEntity, MockBadge, MockTypeOfBadge, MockUser;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -12,8 +12,8 @@ describe('Controller Tests', function() {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockBadge = jasmine.createSpy('MockBadge');
-            MockUser = jasmine.createSpy('MockUser');
             MockTypeOfBadge = jasmine.createSpy('MockTypeOfBadge');
+            MockUser = jasmine.createSpy('MockUser');
             
 
             var locals = {
@@ -21,8 +21,8 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity ,
                 'Badge': MockBadge,
-                'User': MockUser,
-                'TypeOfBadge': MockTypeOfBadge
+                'TypeOfBadge': MockTypeOfBadge,
+                'User': MockUser
             };
             createController = function() {
                 $injector.get('$controller')("BadgeDetailController", locals);
